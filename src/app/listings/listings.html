@@ -1,15 +1,17 @@
 <div class="main-container">
   <fountain-header></fountain-header>
   <main class="main">
-    <div class="defaults-container">
-      <h2 class="defaults-h2">
-        Listings:
-      </h2>
-      <button type="button" class="btn btn-default" ng-click="create('this is a listing!!!')">Create Listing</button>
+      <div class="image">
+        <img src="https://mustbethistalltoride.files.wordpress.com/2015/08/happy-old-couple.jpg" alt="" />
+        <h1 class="sign">
+          Make a difference. <br>
+          <button type="button" class="btn btn-large" ng-click="create('this is a listing!!!')">Start Hosting Today</button>
+        </h1>
+
+      </div>
       <div class="defaults">
         <fountain-listing ng-repeat="listing in $ctrl.listings" listing="listing"></fountain-listing>
       </div>
-    </div>
   </main>
   <fountain-footer></fountain-footer>
 </div>

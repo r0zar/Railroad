@@ -1,11 +1,15 @@
 class ConfirmationsController {
   /** @ngInject */
-  constructor($http) {
+  constructor($http, $scope) {
     $http
       .get('app/confirmations/confirmations.json')
       .then(response => {
         this.confirmations = response.data;
       });
+
+    $scope.create = (confirmation) => {
+      console.log(confirmation);
+    };
   }
 }
 

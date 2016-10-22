@@ -1,11 +1,16 @@
 class BookingsController {
   /** @ngInject */
-  constructor($http) {
+  constructor($http, $scope) {
     $http
       .get('app/bookings/bookings.json')
       .then(response => {
         this.bookings = response.data;
       });
+
+    $scope.create = (booking) => {
+      console.log(booking);
+    };
+
   }
 }
 

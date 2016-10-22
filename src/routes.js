@@ -10,18 +10,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       component: 'app'
     })
-    .state('registration', {
-      url: '/registration',
-      component: 'registration',
-    })
-    .state('sessions', {
-      url: '/sessions',
-      component: 'sessions',
-    })
-    .state('users', {
-      url: '/users',
-      component: 'users',
-    })
     .state('listings', {
       url: '/listings',
       component: 'listings',

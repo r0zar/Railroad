@@ -2,7 +2,6 @@ class HeaderController {
   /** @ngInject */
   constructor($scope, $state, firebase) {
 
-
     $scope.authStatus = (user) => {
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
