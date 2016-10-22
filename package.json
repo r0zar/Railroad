@@ -59,6 +59,7 @@
   "scripts": {
     "build": "gulp",
     "serve": "gulp serve",
+    "start": "gulp serve",
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto"
