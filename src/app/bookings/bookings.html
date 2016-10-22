@@ -1,0 +1,14 @@
+<div class="main-container">
+  <fountain-header></fountain-header>
+  <main class="main">
+    <div class="defaults-container">
+      <h2 class="defaults-h2">
+        Bookings:
+      </h2>
+      <div class="defaults">
+        <fountain-booking ng-repeat="booking in $ctrl.bookings" booking="booking"></fountain-booking>
+      </div>
+    </div>
+  </main>
+  <fountain-footer></fountain-footer>
+</div>

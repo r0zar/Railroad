@@ -1,0 +1,14 @@
+<div class="main-container">
+  <fountain-header></fountain-header>
+  <main class="main">
+    <div class="defaults-container">
+      <h2 class="defaults-h2">
+        Confirmations:
+      </h2>
+      <div class="defaults">
+        <fountain-confirmation ng-repeat="confirmation in $ctrl.confirmations" confirmation="confirmation"></fountain-confirmation>
+      </div>
+    </div>
+  </main>
+  <fountain-footer></fountain-footer>
+</div>

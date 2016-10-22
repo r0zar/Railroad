@@ -1,0 +1,15 @@
+<div class="main-container">
+  <fountain-header></fountain-header>
+  <main class="main">
+    <div class="defaults-container">
+      <h2 class="defaults-h2">
+        Listings:
+      </h2>
+      <button type="button" class="btn btn-default" ng-click="create('this is a listing!!!')">Create Listing</button>
+      <div class="defaults">
+        <fountain-listing ng-repeat="listing in $ctrl.listings" listing="listing"></fountain-listing>
+      </div>
+    </div>
+  </main>
+  <fountain-footer></fountain-footer>
+</div>
