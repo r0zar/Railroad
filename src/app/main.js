@@ -3,7 +3,7 @@ class MainController {
   constructor($scope, $state, firebase) {
 
     $scope.login = (email, password) => {
-      firebase.auth().signInWithEmailAndPassword('ross.ragsdale@gmail.com', 'blahblah')
+      firebase.auth().signInWithEmailAndPassword(email, password)
         .then( function(){
           $scope.signedIn = true;
           $state.go('listings');
