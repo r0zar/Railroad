@@ -1,22 +1,34 @@
 class HeaderController {
   /** @ngInject */
-  constructor($scope, $state, Sessions) {
+  constructor($scope, $state, firebase) {
 
-    $scope.loggedIn = false;
 
-    $scope.login = (user) => {
-      Sessions.login;
-      $state.go('listings');
-      $scope.loggedIn = true;
-      console.log(`${user} is logged in.`);
-    };
+    $scope.authStatus = (user) => {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          console.log('signed in');
+          $scope.signedIn = true;
+        } else {
+          // No user is signed in.
+          console.log('not signed in');
+          $scope.signedIn = false;
+        }
+      });
+    }
 
-    $scope.logout = (user) => {
-      Sessions.logout;
-      $state.go('app');
-      $scope.loggedIn = false;
-      console.log(`${user} is logged out.`);
-    };
+    $scope.logout = () => {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        console.log('signed out');
+        $scope.signedIn = false;
+        $state.go('app');
+      }, function(error) {
+        // An error happened.
+        console.log('well, seems like you\'re stuck here');
+        $scope.signedIn = true;
+      });
+    }
 
   }
 

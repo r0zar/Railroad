@@ -1,12 +1,11 @@
 class ListingsController {
   /** @ngInject */
-  constructor($http, $scope, Sessions) {
-
-    $scope.login = Sessions.login;
+  constructor($http, $scope) {
 
     $http
-      .get('app/listings/listings.json')
+      .get('https://sheltersafe-acc35.firebaseio.com/listings')
       .then(response => {
+        console.log(response.data);
         this.listings = response.data;
       });
 

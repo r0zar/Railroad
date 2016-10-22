@@ -28,10 +28,12 @@ import registration from './app/registration/registration';
 
 
 import './index.scss';
+import config from './config';
 
 angular
   .module('app', [session.name, registration.name, usersModule, listingsModule, bookingsModule, confirmationsModule, directionsModule, 'ui.router'])
   .config(routesConfig)
+  .config(config)
   .component('app', main)
   .component('users', users)
   .component('listings', listings)
