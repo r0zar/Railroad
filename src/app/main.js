@@ -9,6 +9,7 @@ class MainController {
       $scope.loading = true;
       Sessions.login(email, password).then(()=>{
         $scope.loading = false;
+        $scope.signedIn = true;
         $scope.$apply();
         $state.go('listings');
       }).catch((resp)=>{
@@ -25,8 +26,38 @@ class MainController {
       })
     };
 
+    $scope.register = (email, password) => {
+      $scope.loading = true;
+      Sessions.register(email, password).then(()=>{
+        $scope.loading = false;
+        $scope.signedIn = true;
+        $scope.$apply();
+        $state.go('listings');
+      }).catch((resp)=>{
+        $scope.loading = false;
+        $scope.$apply();
+        if (resp.code == 'auth/network-request-failed') {
+          $scope.retrying = true;
+          $scope.$apply();
+          Sessions.login(email, password).then(()=>{
+            $state.go('listings');
+          }).catch((resp)=>{
+            $scope.loading = false;
+            $scope.$apply();
+            if (resp.code == 'auth/network-request-failed') {
+              $scope.retryingagain = true;
+              $scope.$apply();
+              Sessions.login(email, password).then(()=>{
+                $state.go('listings');
+              })
+            }
+        })
+      }});
+    };
+
 
   }
+
 
 
 }

@@ -2,12 +2,25 @@ class ListingsController {
   /** @ngInject */
   constructor($http, $scope) {
 
-    $http
-      .get('https://sheltersafe-acc35.firebaseio.com/listings')
-      .then(response => {
-        console.log(response.data);
-        this.listings = response.data;
-      });
+    $scope.signedIn = true;
+
+    $scope.search = (param) => {
+      $scope.loading = true;
+      $scope.results = [];
+      $http
+        .get('app/listings/listings.json', {
+          cache: true,
+          params: { search: param }
+        })
+        .success(function (results) {
+          $scope.loading = false;
+          $scope.results = results;
+        })
+        .error(function (err) {
+          $scope.loading = false;
+          throw new Error (err);
+        });
+    };
 
     $scope.openModal = () => {
       console.log("click");
@@ -28,10 +41,7 @@ class ListingsController {
         modal.style.display = "none";
       }
     }
-
   }
-
-
 }
 
 export const listings = {

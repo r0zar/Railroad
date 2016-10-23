@@ -216,7 +216,7 @@ $pulse-duration: 750ms;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 800px; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -234,5 +234,21 @@ $pulse-duration: 750ms;
   cursor: pointer;
 }
 
+button {
+  margin-left: 13px;
+  width: 40%;
+  height: 50%;
+}
+input {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+input.size-large {
 
+  height: 30px;
+  width: 606px;
 
+}
+input.ng-invalid.ng-dirty {
+  background-color: pink;
+}

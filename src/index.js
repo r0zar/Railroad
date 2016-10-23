@@ -8,6 +8,9 @@ import {confirmationsModule} from './app/confirmations/index';
 import {directionsModule} from './app/directions/index';
 
 import 'angular-ui-router';
+import 'angular-search';
+import 'angular-ui-bootstrap';
+
 import routesConfig from './routes';
 
 // common
@@ -31,7 +34,7 @@ import config from './config';
 
 
 angular
-  .module('app', [sessions.name, usersModule, listingsModule, bookingsModule, confirmationsModule, directionsModule, 'ui.router'])
+  .module('app', [sessions.name, usersModule, listingsModule, bookingsModule, confirmationsModule, directionsModule, 'ui.router', 'turn/search', 'ui.bootstrap'])
   .config(routesConfig)
   .config(config)
   .component('app', main)
@@ -42,4 +45,18 @@ angular
   .component('directions', directions)
   .component('fountainHeader', header)
   .component('fountainTitle', title)
-  .component('fountainFooter', footer);
+  .component('fountainFooter', footer)
+  .controller('mainCtrl', function ($scope) {
+
+    angular.extend($scope, {
+      searchText: '',
+      clear: function() {
+        $scope.searchText = '';
+        $scope.search();
+      },
+      search: function (param) {
+        console.log(listingsModule.search(param));
+      }
+    });
+
+  });
