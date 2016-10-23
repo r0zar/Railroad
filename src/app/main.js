@@ -1,20 +1,30 @@
 class MainController {
   /** @ngInject */
-  constructor($scope, $state, firebase) {
+  constructor($scope, $state, Sessions) {
+
+    $scope.loading = false;
+    $scope.retrying = false;
 
     $scope.login = (email, password) => {
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then( function(){
-          $scope.signedIn = true;
-          $state.go('listings');
-        })
-        .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          $scope.signedIn = false;
-        });
-    }
+      $scope.loading = true;
+      Sessions.login(email, password).then(()=>{
+        $scope.loading = false;
+        $scope.$apply();
+        $state.go('listings');
+      }).catch((resp)=>{
+        console.log(resp);
+        $scope.loading = false;
+        $scope.$apply();
+        if (resp.code == 'auth/network-request-failed') {
+          $scope.retrying = true;
+          $scope.$apply();
+          Sessions.login(email, password).then(()=>{
+            $state.go('listings');
+          })
+        }
+      })
+    };
+
 
   }
 
@@ -24,4 +34,5 @@ class MainController {
 export const main = {
   template: require('./main.html'),
   controller: MainController
+
 };

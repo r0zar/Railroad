@@ -1,15 +1,21 @@
 <div class="main-container">
   <fountain-header></fountain-header>
   <main class="main">
-    <div class="image">
+    <div class="image ">
       <img src="http://i.huffpost.com/gen/1788533/images/o-SINGLE-MOTHER-facebook.jpg" alt="" />
       <h1 class="sign">
-        Our mission is to assist shelters so they never have to turn a family away again. <br>
-        <input type="text" ng-model="email" class="form-control" placeholder="Email Address" required autofocus>
-        <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
-        <div class="row">
-          <button type="button" class="btn btn-default" ng-click="login(email, password)">Log in</button>
-          <button type="button" class="btn btn-default" ng-click="register(email, password)">Register</button>
+        <div ng-show="loading==true" class="loading-pulse"></div>
+        <div ng-hide="loading==true">
+          Our mission is to assist shelters because zombies. <br>
+          <input type="text" ng-model="email" class="form-control" placeholder="Email Address" required autofocus>
+          <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
+          <div class="row">
+            <button type="button" class="btn btn-default" ng-click="login(email, password)">Log in</button>
+            <button type="button" class="btn btn-default" ng-click="register(email, password)">Register</button>
+        </div>
+        </div>
+        <div ng-show="retrying==true&&loading==false">
+          <p>It looks like GlobalHack needs more bandwidth, I'll give it another shot...</p>
         </div>
       </h1>
     </div>

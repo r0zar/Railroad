@@ -23,12 +23,15 @@ import {bookings} from './app/bookings/bookings';
 import {confirmations} from './app/confirmations/confirmations';
 import {directions} from './app/directions/directions';
 
+import sessions from './app/sessions/sessions'
+
 
 import './index.scss';
 import config from './config';
 
+
 angular
-  .module('app', [usersModule, listingsModule, bookingsModule, confirmationsModule, directionsModule, 'ui.router'])
+  .module('app', [sessions.name, usersModule, listingsModule, bookingsModule, confirmationsModule, directionsModule, 'ui.router'])
   .config(routesConfig)
   .config(config)
   .component('app', main)

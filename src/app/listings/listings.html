@@ -5,10 +5,23 @@
       <img src="https://mustbethistalltoride.files.wordpress.com/2015/08/happy-old-couple.jpg" alt="" />
       <h1 class="sign">
         Make a difference. <br>
-        <button type="button" class="btn btn-large" ng-click="create('this is a listing!!!')">Start Hosting Today</button>
+        For brains... <br>
+        <button type="button" class="btn btn-large" ng-click="openModal()">Search for your new home.</button>
       </h1>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span style="padding-top: 10px;" ng-click="closeModal()" class="close">x</span>
+          <input style="width: 95%; height: 50px;font-size: 20px;" type="text" ng-model="search" class="search form-control" placeholder="What factors are important to you when considering a new home?" required autofocus>
+        </div>
+
+      </div>
     </div>
     <div class="defaults">
+
       <fountain-listing ng-repeat="listing in $ctrl.listings" listing="listing"></fountain-listing>
     </div>
   </main>
