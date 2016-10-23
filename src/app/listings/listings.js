@@ -3,23 +3,22 @@ class ListingsController {
   constructor($http, $scope) {
 
     $scope.signedIn = true;
+    $scope.loading = true;
+    $scope.results = [];
+
+
+    $http
+      .get('app/listings/listings.json').then((myData)=>{
+        $scope.results = myData;
+      });
 
     $scope.search = (param) => {
-      $scope.loading = true;
-      $scope.results = [];
-      $http
-        .get('app/listings/listings.json', {
-          cache: true,
-          params: { search: param }
-        })
-        .success(function (results) {
-          $scope.loading = false;
-          $scope.results = results;
-        })
-        .error(function (err) {
-          $scope.loading = false;
-          throw new Error (err);
+      $scope.findValue = function(param) {
+        console.log(param);
+        angular.forEach($scope.results.title, function(value, key) {
+          console.log(value, key);
         });
+      };
     };
 
     $scope.openModal = () => {
