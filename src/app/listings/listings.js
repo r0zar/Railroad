@@ -13,12 +13,10 @@ class ListingsController {
       });
 
     $scope.search = (param) => {
-      $scope.findValue = function(param) {
         console.log(param);
         angular.forEach($scope.results.title, function(value, key) {
           console.log(value, key);
         });
-      };
     };
 
     $scope.openModal = () => {
